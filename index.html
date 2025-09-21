@@ -19,6 +19,10 @@
       .text {
           max-width: 800px;
       }
+      img {
+          margin-bottom: 1.5rem;
+          max-width: 800px;
+      }
       .large-button {
           padding: 15px 30px;
           font-size: 1.5rem;
@@ -37,52 +41,78 @@
     </style>
   </head>
   <body>
-    <h1>The dit paddle of the Vibroplex</h1>
+    <h1>Vibroplex - understanding the semi-automatic timing</h1>
 
     <div class='text'>
-      This slow motion simulation at a Vibroplex keyer's paddle
-      reveals its quirky, complex behavior. While the dah paddle acts
-      like a simple straight key, the dit paddle interacts in
-      surprisingly complex ways with the operator's press and release
-      of the paddle.
+      A <a href='https://en.wikipedia.org/wiki/Vibroplex'>Vibroplex</a>
+      keyer is a mechanical keyer ("bug") invented in the early 1900s
+      (<a href='https://patents.google.com/patent/US842154A/en?oq=(842154)'>patent</a>).
+      It is operated with a side-to-side lever. Moving the lever one
+      way automatically produces a series of dits while in that
+      position. Moving it the other way makes it work like a straight
+      key, and typically used to send dahs.  Bugs are known to be
+      difficult to master, and the simple "bug emulation mode" in many
+      electronic keyers don't reproduce the nuances of bug timing,
+      explored here.
     </div>
+
     <div class='text'>
-      The core of the mechanism is the dit paddle, which is a
-      vibrating rod fixed at one end, and a weight that is free to
-      move at the other.
+      The dah arm acts like a simple straight key, and is not
+      considered any further in the rest of this document.
+    </div>
+    <div>
+      <img src='dah_paddle.jpg'>
+    </div>
+
+    <div class='text'>
+      The dit arm has a flat spring (15) after the hinge, allowing
+      that section of the arm to oscillate. The position of a weight
+      at the end of the arm controls the frequency of oscillation.
+    </div>
+
+    <div>
+      <img src='dit_paddle.jpg'>
+    </div>
+    
+    <div class='text'>
+      The core of the dit mechanism can be simplified to an oscillating
+      rod fixed at one end, and a weight that is free to move at the
+      other.
     </div>
 
     <canvas id='neutralCanvas' width="800" height="600" ></canvas>
     <script src='neutral.js'></script>
 
     <div class='text'>
-      In the neutral position, a damper is placed to one side of the
-      center of oscillation, so any movement beyond the center of
-      oscillation is immediately stopped (ideally.)
+      In the neutral position, a damper placed to one side of the
+      center of oscillation stops any movement beyond that point
+      (ideally.)
     </div>
 
     <canvas id='dampedCanvas' width="800" height="600" ></canvas>
     <script src='damped.js'></script>
 
     <div class='text'>
-      Pressing the dit paddle rotates the vibrating rod by a small
-      angle. This changes the center of oscillation, causing the rod
-      to start vibrating around the new center.
+      Pressing the dit paddle rotates the dit arm by a small
+      angle. This moves the fixed base of the oscillating section to a
+      new position, causing the weighted arm to start oscillating
+      around the new position.
     </div>
 
     <div class='text'>
-      A light spring contact is placed on the rod and adjusted so that
-      a connection is made whenever the rod goes past the new center
-      of oscillation. The sinusoidal motion of the rod causes a stream
-      of evenly spaced dits and spaces to be produced. The motion of
-      the secondary spring adds a small additional complexity, but is
-      can be ignored relative to the primary dynamics of the paddle.
+      A light spring contact on the arm forms a connection whenever
+      the arm goes past the new center of oscillation. This results in
+      a stream of evenly spaced dits and spaces. Releasing the arm moves
+      it back to the neutral position, where the damper quickly stops any
+      oscillation.
     </div>
 
     <div class='text'>
       Unlike an electronic keyer, releasing a vibroplex paddle too
       early can cause a "short" dit, while releasing it too late can
-      cause an extra "short" dit.
+      cause an extra ("short") dit. There is also a half-dit phase lag
+      between pressing the paddle and the first dit being generated, while
+      the arm begins moving past the new center of oscillation.
     </div>
 
     <div class='text'>
@@ -91,13 +121,6 @@
       pressed. Release it at various points of the oscillation to see
       how it affects the dit space timing.
     </div>
-
-    <div class='text'>
-      <b>Note:</b> for
-      simplicity, this simulation moves the rod rather than rotating
-      it, but the dynamics are similar in both cases.
-    </div>
-
 
     <canvas id='vibrationCanvas' width="800" height="600" ></canvas>
     <button id='ditButton' class="large-button">Dit</button>
