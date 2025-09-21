@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang='en'>
+  <head>
+    <meta charset='UTF-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+    <title>Vibroplex Analysis and Simulation</title>
+    <style>
+      body {
+          margin: 0;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          min-height: 100vh;
+          background-color: #f0f0f0;
+          flex-direction: column;
+          margin: 20px;
+          gap: 20px;
+      }
+      .text {
+          max-width: 800px;
+      }
+      .large-button {
+          padding: 15px 30px;
+          font-size: 1.5rem;
+          cursor: pointer;
+          border-radius: 8px;
+      }
+      #slider {
+          width: 300px;
+          cursor: pointer;
+      }
+      canvas {
+          border: 1px solid #000;
+          background-color: #fff;
+          margin-bottom: 1.5rem;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>The dit paddle of the Vibroplex</h1>
+
+    <div class='text'>
+      This slow motion simulation at a Vibroplex keyer's paddle
+      reveals its quirky, complex behavior. While the dah paddle acts
+      like a simple straight key, the dit paddle interacts in
+      surprisingly complex ways with the press and release of the dit
+      paddle.
+    </div>
+    <div class='text'>
+      The core of the mechanism is the dit paddle, which is a
+      vibrating rod fixed at one end, and a weight that is free to
+      move at the other.
+    </div>
+
+    <canvas id='neutralCanvas' width="800" height="600" ></canvas>
+    <script src='neutral.js'></script>
+
+    <div class='text'>
+      In the neutral position, a damper is placed to one side of the
+      center of oscillation, so any movement beyond the center of
+      oscillation is immediately stopped (ideally.)
+    </div>
+
+    <canvas id='dampedCanvas' width="800" height="600" ></canvas>
+    <script src='damped.js'></script>
+
+    <div class='text'>
+      Pressing the dit paddle rotates the vibrating rod by a small
+      angle, causing the rod to start vibrating.
+    </div>
+
+    <div class='text'>
+      A flexible contact is placed on the rod so that a connection is
+      made whenever the rod goes beyond the new center of oscillation.
+    </div>
+
+    <div class='text'>
+      Unlike an electronic keyer, releasing a vibroplex paddle too
+      early can cause a "short" dit, while releasing it too late can
+      cause an extra "short" dit.
+    </div>
+
+    <div class='text'>
+      Press the dit button to simulate pressing the dit paddle. You
+      should hear perfectly spaced dits and spaces if you keep it
+      pressed. Release it at various points of the oscillation to see
+      how it affects the dit space timing.
+    </div>
+
+    <div class='text'>
+      <b>Note:</b> for
+      simplicity, this simulation moves the rod rather than rotating
+      it, but the dynamics are similar in both cases.
+    </div>
+
+
+    <canvas id='vibrationCanvas' width="800" height="600" ></canvas>
+    <button id='ditButton' class="large-button">Dit</button>
+    <label for='slider'>Speed</label>
+    <input type='range' id='slider' min='1' max='100' value='20'>
+    <script src='simple.js'></script>
+
+  </body>
+</html>
