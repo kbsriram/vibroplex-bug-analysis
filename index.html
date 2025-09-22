@@ -16,18 +16,23 @@
           margin: 20px;
           gap: 20px;
       }
-      .text {
+      div {
           max-width: 800px;
       }
       img {
           margin-bottom: 1.5rem;
-          max-width: 800px;
+          max-width: 100%;
       }
       .large-button {
           padding: 15px 30px;
           font-size: 1.5rem;
           cursor: pointer;
           border-radius: 8px;
+          -webkit-touch-callout: none;
+          -webkit-user-select: none;
+          -moz-user-select: none;
+          -ms-user-select: none;
+          user-select: none;
       }
       #slider {
           width: 300px;
@@ -37,6 +42,7 @@
           border: 1px solid #000;
           background-color: #fff;
           margin-bottom: 1.5rem;
+          max-width: 100%;
       }
     </style>
   </head>
@@ -75,18 +81,17 @@
     </div>
     
     <div class='text'>
-      The core of the dit mechanism can be simplified to an oscillating
-      rod with a fixed base, and a weight that is free to move at the
-      other.
+      The core of the dit mechanism can be simplified to an
+      oscillating rod with a fixed end, and a free end with a weight.
     </div>
 
     <canvas id='neutralCanvas' width="800" height="600" ></canvas>
     <script src='neutral.js'></script>
 
     <div class='text'>
-      In the neutral position, a damper placed to one side of the
-      center of oscillation stops any movement beyond that point
-      (ideally.)
+      In the neutral position, a damper is also placed to one side of
+      the center of oscillation. This stops any movement beyond that
+      point (ideally.)
     </div>
 
     <canvas id='dampedCanvas' width="800" height="600" ></canvas>
@@ -97,22 +102,6 @@
       angle. This moves the fixed base of the oscillating section to a
       new position, causing the weighted arm to start oscillating
       around the new position.
-    </div>
-
-    <div class='text'>
-      A light spring contact on the arm forms a connection whenever
-      the arm goes past the new center of oscillation. This results in
-      a stream of evenly spaced dits and spaces. Releasing the arm moves
-      it back to the neutral position, where the damper quickly stops any
-      oscillation.
-    </div>
-
-    <div class='text'>
-      Unlike an electronic keyer, releasing a vibroplex paddle too
-      early can cause a "short" dit, while releasing it too late can
-      cause an extra ("short") dit. There is also a half-dit phase lag
-      between pressing the paddle and the first dit being generated, while
-      the arm begins moving past the new center of oscillation.
     </div>
 
     <div class='text'>
@@ -128,6 +117,22 @@
     <label for='slider'>Speed</label>
     <input type='range' id='slider' min='1' max='100' value='20'>
     <script src='simple.js'></script>
+
+    <div class='text'>
+      A light U-shaped spring contact on the arm forms a connection
+      whenever the arm goes past a limit. This results in a stream of
+      evenly spaced dits and spaces if the limit is adjusted
+      carefully. Releasing the arm moves it back to the neutral
+      position, where the damper quickly stops any oscillation.
+    </div>
+
+    <div class='text'>
+      Unlike an electronic keyer, releasing a vibroplex paddle too
+      early can cause a "short" dit, while releasing it too late can
+      cause an extra ("short") dit. There is also a half-dit phase lag
+      between pressing the paddle and the first dit being generated, until
+      the arm moves past the new center of oscillation.
+    </div>
 
   </body>
 </html>

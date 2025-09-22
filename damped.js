@@ -14,8 +14,8 @@
     let dt = 0.01;
     const damperX = width / 2;
 
-    let X = fixedX - 100;
-    let velocityX = 0;
+    let X = fixedX;
+    let velocityX = -600;
     let history = [];
     function push_history(v) {
         history.push(v);
@@ -99,7 +99,7 @@
     animate();
 
     function resetX() {
-        X = fixedX - 100;
+        velocityX = -600;
         setTimeout(resetX, 5000);
     }
     setTimeout(resetX, 5000); 
