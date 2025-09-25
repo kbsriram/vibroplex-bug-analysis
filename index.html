@@ -128,7 +128,7 @@
         </li>
 
         <li>
-          Unlike an electronic keyer, releasing a vibroplex paddle too
+          Unlike an electronic keyer, releasing a Vibroplex paddle too
           early can cause the last dit to be too short, and
           releasing it too late can cause an extra short dit.
         </li>
@@ -139,17 +139,21 @@
         </li>
 
         <li>
-          This analyis ignores the effect of the light U-shaped spring
-          connector - it doesn't influence the oscillation frequency
-          of the primary dit arm meaningfully.
+          This simulation ignores the effect of the light U-shaped
+          spring contact (19). It effectively increases the spring
+          constant during one half of the oscillation while it makes
+          contact.
         </li>
 
         <li>
-          However, it tends to cause other issues. If the dit paddle
-          doesn't release quickly, the fast oscillation of the U
-          spring can continue to strike the contact as the paddle
-          releases, causing a buzzing or "mushy" dit as the paddle arm
-          swings back to the neutral position.
+          Unlike the main flat spring however, the U spring is not
+          damped. The faster natural frequency of the U spring can
+          continue to strike the contact as the dit arm swings away or
+          towards the dit stop. This may cause a scratchy or "mushy"
+          dit sound. Mechanisms like
+          the <a href='https://www.youtube.com/watch?v=OKY2bxTs2R8'>dot
+          stabilizer</a> are usually stops analogous to the main
+          damper, but for the U-spring.
         </li>
 
       </ul>
